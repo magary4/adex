@@ -1,0 +1,35 @@
+version: '3.6'
+
+services:
+    api_php:
+        build:
+          context: .
+          target: develop
+        container_name: api_php
+        working_dir: /var/www
+        command: php -S 0.0.0.0:8080 -t public
+        environment:
+            docker: "true"
+        ports:
+            - 8080:8080
+        links:
+            - api_mysql
+        volumes:
+            - .:/var/www
+            - ./docker/php/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
+
+    api_mysql:
+        image: mysql:8
+        container_name: api_mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=adex_api
+            - MYSQL_DATABASE=adex_api
+            - MYSQL_USER=adex_api
+            - MYSQL_PASSWORD=adex_api
+        volumes:
+            - api-mysql-data:/var/lib/mysql
+        ports:
+            - 3307:3306
+
+volumes:
+    api-mysql-data:

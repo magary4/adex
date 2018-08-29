@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="Coding standard">
+    <description>More info for updating this file can be found -> http://www.squizlabs.com/view?a=2697</description>
+
+    <!-- Include the whole PSR2 standard -->
+    <rule ref="PSR2"/>
+
+    <!-- Lines can be no longer than 300 chars -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="300"/>
+        </properties>
+    </rule>
+
+</ruleset>
