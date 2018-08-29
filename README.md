@@ -16,7 +16,7 @@ docker exec -i api_mysql mysql -uadex_api -padex_api adex_api < data/db.sql
 POST /incoming-request HTTP/1.1
 Content-Type: application/json
 
-{"customerID":1,"tagID":"1","remoteIP":"123.234.56.78","timestamp":1500000000}
+{"customerID":1,"tagID":1,"remoteIP":"123.234.56.78","timestamp":1500000000}
 ```
 
 ##### Get statistics:
