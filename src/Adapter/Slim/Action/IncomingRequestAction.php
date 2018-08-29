@@ -4,6 +4,8 @@ namespace Adex\Api\Adapter\Slim\Action;
 
 use Adex\Api\Adapter\Port\HourlyStatRepository;
 use Adex\Api\Adapter\Request\Payload;
+use Slim\Http\Body;
+use Slim\Http\Headers;
 use Slim\Http\Response;
 
 class IncomingRequestAction
@@ -17,13 +19,11 @@ class IncomingRequestAction
 
     public function exec(Payload $payload, Response $response): Response
     {
-//        return $response->withStatus( 500 )
-//            ->withHeader( 'Content-Type', 'application/json' )
-//            ->write( json_encode([ "status" => "success" ]) );
-
         $this->hourlyStatRepository->update($payload->getCustomerId(), $payload->getTime());
 
-        $response = $response->write("success");
+        $response = $response
+            ->withStatus(201)
+            ->withJson(["success"=>true]);
 
         return $response;
     }

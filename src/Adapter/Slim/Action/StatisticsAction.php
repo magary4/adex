@@ -35,14 +35,10 @@ class StatisticsAction
             ];
         }
 
-        var_dump(json_encode($statistic));
-        exit;
-
-
-        //withJson(["status"=>"success"]);
+        $response = $response
+            ->withStatus(200)
+            ->withJson($statistic);
 
         return $response;
-
-        $this->hourlyStatRepository->getStatistics(1, 2);
     }
 }

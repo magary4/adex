@@ -26,8 +26,6 @@ abstract class AbstractMiddleware
      * @param Request $request
      * @param Response $response
      * @return Request
-     *
-     * @suppress PhanUnusedProtectedMethodParameter
      */
     protected function applyBefore(Request $request, Response $response): Request
     {
@@ -38,8 +36,6 @@ abstract class AbstractMiddleware
      * @param Request $request
      * @param Response $response
      * @return Response
-     *
-     * @suppress PhanUnusedProtectedMethodParameter
      */
     protected function applyAfter(Request $request, Response $response): Response
     {

@@ -42,9 +42,6 @@ class DIC
         $this->addErrorhandler();
     }
 
-    /**
-     * @suppress PhanUnreferencedPublicMethod (it is used in Doctrine console config script which is ut of phan scope)
-     */
     public function bootstrapDoctrine(): void
     {
         $this->initDoctrine();

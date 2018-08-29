@@ -31,7 +31,7 @@ class Routes
 
         $app
             ->post("/incoming-request", function ($request, $response, $args) use ($app) {
-                $app->getContainer()->get(IncomingRequestAction::class)->exec(
+                return $app->getContainer()->get(IncomingRequestAction::class)->exec(
                     $request->getAttribute(Payload::class),
                     $response
                 );
@@ -42,7 +42,7 @@ class Routes
         // TODO: grunt this route
         $app
             ->get("/statistics", function ($request, $response, $args) use ($app) {
-                $app->getContainer()->get(StatisticsAction::class)->exec(
+                return $app->getContainer()->get(StatisticsAction::class)->exec(
                     intval($request->getParam("customerID")),
                     new \DateTime($request->getParam("date")),
                     $response

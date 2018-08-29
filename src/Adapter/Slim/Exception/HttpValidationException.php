@@ -18,10 +18,6 @@ class HttpValidationException extends \Exception
         $this->extra = $extra;
     }
 
-    /**
-     * @return array
-     * @suppress PhanUnreferencedPublicMethod
-     */
     public function getExtra(): array
     {
         return $this->extra;

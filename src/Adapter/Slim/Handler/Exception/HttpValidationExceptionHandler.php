@@ -1,4 +1,4 @@
-<?php declare( strict_types=1 );
+<?php declare(strict_types=1);
 
 namespace Adex\Api\Adapter\Slim\Handler\Exception;
 
@@ -35,7 +35,11 @@ class HttpValidationExceptionHandler
                 // round to nearest hour
                 $time = ( new \DateTime() )->setTimestamp($timestamp - ( $timestamp % 3600 ));
 
-                $this->getHourlyStatRepository()->update($customerId, $time, false);
+                try {
+                    $this->getHourlyStatRepository()->update( $customerId, $time, false );
+                } catch (\Exception $e) {
+                    // do nothing
+                }
             }
 
             $json = json_encode([
